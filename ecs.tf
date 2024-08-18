@@ -19,8 +19,6 @@ data "aws_ecr_image" "service_image" {
     fargate_memory = var.fargate_memory
     aws_region     = var.aws_region
   }
-}
-
 resource "aws_ecs_task_definition" "app" {
   family                   = "cb-app-task"
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn

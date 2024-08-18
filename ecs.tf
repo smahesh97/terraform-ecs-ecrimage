@@ -6,6 +6,7 @@ resource "aws_ecs_cluster" "main" {
 
 data "template_file" "cb_app" {
   template = file("./templates/ecs/cb_app.json.tpl")
+}
 data "aws_ecr_image" "service_image" {
   repository_name = "int-demo"
   image_tag       = "latest"

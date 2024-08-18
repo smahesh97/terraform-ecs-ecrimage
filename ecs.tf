@@ -11,8 +11,7 @@ data "aws_ecr_image" "service_image" {
   repository_name = "int-demo"
   image_tag       = "latest"
 }
-
-  vars = {
+vars = {
     app_image      = data.aws_ecr_image.service_image.image_uri
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu

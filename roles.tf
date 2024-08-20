@@ -1,11 +1,11 @@
 # ECS task execution role data
 data "aws_iam_policy_document" "ecs_task_execution_role" {
-   "Version": "2012-10-17",
-    "Statement": [
+   Version: "2012-10-17",
+    Statement: [
         {
-            "Effect": "Allow",
-            "Action": "*",
-            "Resource": "*"
+            Effect: "Allow",
+            Action: "*",
+            Resource: "*"
         }
     ]
 }

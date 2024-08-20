@@ -14,10 +14,14 @@ variable "az_count" {
   description = "Number of AZs to cover in a given region"
   default     = "2"
 }
+data "aws_ecr_image" "service_image" {
+  repository_name = "int-demo"
+  image_tag       = "latest"
+}
 
 variable "app_image" {
   description = "Docker image to run in the ECS cluster"
-  default     = "891376972409.dkr.ecr.us-east-1.amazonaws.com/int-demo:latest"
+  default     = "data.aws_ecr_image.service_image.image_uri"
 }
 
 variable "app_port" {

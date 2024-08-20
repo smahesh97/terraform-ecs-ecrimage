@@ -3,9 +3,6 @@
 resource "aws_ecs_cluster" "main" {
   name = "cb-cluster"
 }
-data "template_file" "cb_app" {
-  template = file("./templates/ecs/cb_app.json.tpl")
-
 data "aws_ecr_image" "service_image" {
   repository_name = "int-demo"
   image_tag       = "latest"
@@ -13,8 +10,9 @@ data "aws_ecr_image" "service_image" {
 output "ecr-image-id" {
     value = data.aws_ecr_image.service_image.image_uri
 }
-
-  vars = {
+data "template_file" "cb_app" {
+  template = file("./templates/ecs/cb_app.json.tpl")
+vars = {
     app_image      = data.aws_ecr_image.service_image.image_uri
     app_port       = var.app_port
     fargate_cpu    = var.fargate_cpu

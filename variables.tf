@@ -9,19 +9,12 @@ variable "ecs_task_execution_role_name" {
   description = "ECS task execution role name"
   default = "myEcsTaskExecutionRole"
 }
-
+variable "app_image" {
+  description = "Docker image to run in the ECS cluster"
+  }
 variable "az_count" {
   description = "Number of AZs to cover in a given region"
   default     = "2"
-}
-data "aws_ecr_image" "service_image" {
-  repository_name = "int-demo"
-  image_tag       = "latest"
-}
-
-variable "app_image" {
-  description = "Docker image to run in the ECS cluster"
-  default     = "data.aws_ecr_image.service_image.image_uri"
 }
 
 variable "app_port" {
